@@ -5,8 +5,8 @@ import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
 
 import { Outlet } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/Header/header';
+import Footer from './components/Footer/footer';
 
 function App() {
   // console.log(process.env.REACT_APP_APPWRITE_URL)..for react
@@ -35,7 +35,7 @@ function App() {
       <div className='w-full-block'>
         <Header/>
         <main>
-          <Outlet/>
+          Todo : <Outlet/>
         </main>
         <Footer/>
       </div>
