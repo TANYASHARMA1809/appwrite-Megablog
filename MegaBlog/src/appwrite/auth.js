@@ -1,6 +1,6 @@
 import conf from "../conf/conf.js";
 
-import{Client, Account,ID} from "appwrite"
+import{Client, Account,ID} from "appwrite";
 
 export class AuthService{
     client =new Client();
@@ -19,7 +19,7 @@ export class AuthService{
             const userAccount = await this.account.create(ID.unique(),email,password,name);
             if(userAccount){
                 //call another method..login krwado
-                return this.login({email,password})
+                return this.login({email,password});
             }else{
                 return userAccount;
             }
@@ -31,7 +31,7 @@ export class AuthService{
 
     async login({email,password}){
         try{
-           return  await this.account.createEmailPasswordSession(email,password);
+           return  await this.account.createEmailSession(email,password);
 
         }catch(error){
             throw error;

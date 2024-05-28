@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 
 //container accept the properties as a children
 //it is just a box,iske andr height width styling properties define jrte hai

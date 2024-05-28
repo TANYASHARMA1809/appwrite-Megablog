@@ -1,5 +1,5 @@
 import conf from "../conf/conf.js";
-import {Client, ID, Databases, Storage, Query} from "appwrite"
+import {Client, ID, Databases, Storage, Query} from "appwrite";
 
 export class Service{
     client=new Client();
@@ -26,7 +26,7 @@ export class Service{
                     content,
                     featuredImage,
                     status,
-                    userId
+                    userId,
                 }
             )
         }catch(error){
@@ -44,7 +44,7 @@ export class Service{
                     title,
                     content,
                     featuredImage,
-                    status
+                    status,
                 }
             )
         }catch(error){

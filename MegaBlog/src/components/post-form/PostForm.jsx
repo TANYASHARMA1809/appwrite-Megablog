@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux'
 function PostForm({post}) {
   const {register,handleSubmit,watch,setValue,control,getValues}=useForm({
     defaultValues:{
-      title: post?.title || '',
-      content: post?.content ||'',
-      slug: post?.$id || '',
-      status: post?.status || 'active',
-    }
+      title: post?.title || "",
+      content: post?.content || "",
+      slug: post?.$id || "",
+      status: post?.status || "active",
+    },
   })
 
   const navigate=useNavigate()
@@ -44,7 +44,7 @@ function PostForm({post}) {
             ...data,
             userId:userData.$id,
 
-          })
+          });
           if(dbPost){
             navigate(`/post/${dbPost.$id}`)
           }
@@ -56,12 +56,12 @@ function PostForm({post}) {
   //slug transform, it is used to as we are having 2 input field title and slug..title ko watch krna hai and slug k andr value generate krni hai,and space diya hai toh usko - bnana hai
 
   const slugTransform=useCallback((value)=>{
-    if(value && typeof value === 'string'){
-      return value.trim().toLowerCase().replace(/^[a-zA-Z\d\s]+/g, '-').replace(/\s/g, '-');
+    if(value && typeof value === "string"){
+      return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
     }
     return "";
 
-  },[])
+  },[]);
 
 
   //this is memory management..apne 1 useEffect lia or usme methos call kia
@@ -70,15 +70,15 @@ function PostForm({post}) {
 
   React.useEffect(()=>{
     const subscription = watch((value,{name})=>{
-      if(name==='title'){
-        setValue('slug',slugTransform(value.title,{shouldValidate : true}))
+      if(name==="title"){
+        setValue("slug",slugTransform(value.title),{shouldValidate : true});
       }
     });
 
     return ()=>{
       subscription.unsubscribe();
     }
-  },[watch,slugTransform,setValue])
+  },[watch,slugTransform,setValue]);
 
 
   return (
