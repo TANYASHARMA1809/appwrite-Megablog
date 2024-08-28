@@ -16,7 +16,14 @@ export class Service{
     }
 
     async createPost({title,slug,content,featuredImage,status,userId}){
+       // console.log(conf.appwriteCollectionId)
+       
         try{
+            const existingPost = await this.getPost(slug);
+            if (existingPost) {
+                console.error(`Post with slug "${slug}" already exists. Choose a different slug.`);
+                throw new Error(`Post with slug "${slug}" already exists.`);
+            }
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -60,7 +67,7 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug
             )
-            return true
+            return true;
 
         }catch(error){
             console.log("Appwrite service :: deletePost :: error",error);

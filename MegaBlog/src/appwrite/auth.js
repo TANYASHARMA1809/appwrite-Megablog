@@ -30,8 +30,10 @@ export class AuthService{
 
 
     async login({email,password}){
+        //console.log(conf.appwriteUrl)
+        console.log(email,password)
         try{
-           return  await this.account.createEmailSession(email,password);
+           return  await this.account.createEmailPasswordSession(email,password);
 
         }catch(error){
             throw error;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-function Header() {
+export default function Header() {
   const authStatus=useSelector((state)=>state.auth.status)
   const navigate=useNavigate()
   const navItems=[
@@ -23,8 +23,8 @@ function Header() {
       active: !authStatus,
   },
   {
-      name: "All Posts",
-      slug: "/all-posts",
+      name: "My Posts",
+      slug: "/my-posts",
       active: authStatus,
   },
   {
@@ -34,21 +34,23 @@ function Header() {
   },
   ]
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className='w-full overflow-hidden py-3 shadow-xl bg-gradient-to-r from-rose-100 to-fuchsia-950'>
       <Container>
-        <nav className='flex'>
+        <nav className='flex items-center'>
+          
           <div className='mr-4'>
             <Link to='/'>
-              <Logo width='70px'/>
+              <Logo />
             </Link>
           </div>
+          <h1 className='ml-1 font-mono text-4xl text-black '>Website</h1>
           <ul className='flex ml-auto'>
             {navItems.map((item)=>
             item.active ? (
               <li key= {item.name}>
                 <button
                 onClick={()=>navigate(item.slug)}
-                className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                className='inline-block px-6 py-2 duration-200 hover:bg-gray-400 rounded-full text-xl text-white'
                 >{item.name}</button>
               </li>
             ): null)}
@@ -60,9 +62,9 @@ function Header() {
             )}
           </ul>
         </nav>
-      </Container>
+        </Container>
     </header>
   )
 }
 
-export default Header
+
