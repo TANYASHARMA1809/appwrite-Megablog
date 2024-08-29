@@ -34,23 +34,23 @@ export default function Header() {
   },
   ]
   return (
-    <header className='w-full overflow-hidden py-3 shadow-xl bg-gradient-to-r from-rose-100 to-fuchsia-950'>
+    <header className='w-full overflow-hidden py-3 shadow-xl bg-gradient-to-r from-zinc-6+00 to-zinc-600'>
       <Container>
-        <nav className='flex items-center'>
+        <nav className='flex items-center justify-between'>
           
-          <div className='mr-4'>
+          <div className='flex items-center space-x-1 md:space-x-2'>
             <Link to='/'>
               <Logo />
             </Link>
           </div>
-          <h1 className='ml-1 font-mono text-4xl text-black '>Website</h1>
-          <ul className='flex ml-auto'>
+          {/* <h1 className='text-xl text-black sm:text-2xl md:text-4xl px-1 md:px-2 '>Website</h1> */}
+          <ul className='flex items-center space-x-2 md:space-x-4'>
             {navItems.map((item)=>
             item.active ? (
               <li key= {item.name}>
                 <button
                 onClick={()=>navigate(item.slug)}
-                className='inline-block px-6 py-2 duration-200 hover:bg-gray-400 rounded-full text-xl text-white'
+                className='inline-block px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-lg duration-200 hover:bg-gray-400 rounded-full text-white'
                 >{item.name}</button>
               </li>
             ): null)}

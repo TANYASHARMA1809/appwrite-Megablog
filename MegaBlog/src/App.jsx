@@ -31,7 +31,7 @@ function App() {
   },[])
 
   return !loading ? (
-    <div className='bg-gradient-to-r from-rose-100 to-fuchsia-950 '>
+    <div className='bg-gradient-to-r from-slate-700 to-zinc-600'>
         <Header/>
         <main >
           <Outlet/>
